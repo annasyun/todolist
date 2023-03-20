@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import useInput from "../hooks/useInput";
 import { validator } from "../util/validator";
 import { 회원가입Axios } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
   const [이메일객체, 이메일유효성검사결과] = useInput("", validator.email);
@@ -15,12 +16,22 @@ export default function SignUp() {
   const 버튼활성화 =
     이메일유효성검사결과.current.결과 && 비밀번호유효성검사결과.current.결과;
 
+  const navigate = useNavigate();
+
   const 회원가입 = async () => {
-    const res = await 회원가입Axios({
-      email: 이메일객체.value,
-      password: 비밀번호객체.value,
-    });
-    console.log("응답", res);
+    try {
+      const res = await 회원가입Axios({
+        email: 이메일객체.value,
+        password: 비밀번호객체.value,
+      });
+      console.log("응답", res);
+
+      if (res.status == 201) {
+        navigate("/login");
+      }
+    } catch (error) {
+      console.error(error.response.data.message);
+    }
   };
 
   return (
