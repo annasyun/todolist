@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import useInput from "../hooks/useInput";
 import { validator } from "../util/validator";
 import { 회원가입Axios } from "../api/auth";
@@ -27,7 +26,7 @@ export default function SignUp() {
       console.log("응답", res);
 
       if (res.status == 201) {
-        navigate("/login");
+        navigate("/signin");
       }
     } catch (error) {
       console.error(error.response.data.message);

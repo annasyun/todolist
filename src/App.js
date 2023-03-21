@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
-import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
+import SignIn from "./pages/SignIn";
 import ToDoList from "./pages/ToDoList";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Navigate to="/login" />}></Route>
-        <Route path="/login" element={<Login />}></Route>
+        <Route path="/signin" element={<SignIn />}></Route>
         <Route path="/signup" element={<SignUp />}></Route>
         <Route path="/todolist" element={<ToDoList />}></Route>
       </Routes>
