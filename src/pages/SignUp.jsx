@@ -23,7 +23,7 @@ export default function SignUp() {
         email: 이메일객체.value,
         password: 비밀번호객체.value,
       });
-      console.log("응답", res);
+      console.log("응답:", res);
 
       if (res.status == 201) {
         navigate("/signin");
