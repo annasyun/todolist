@@ -31,6 +31,11 @@ export default function SignIn() {
       password: 로그인비밀번호객체.value,
     });
     console.log("응답:", res);
+
+    if (res.status == 200) {
+      localStorage.setItem("signInToken", res.data.access_token);
+      navigate("/todo");
+    }
   };
 
   return (
