@@ -5,8 +5,6 @@ export default function useInput(init, 유효성검사함수) {
   const [value, setValue] = useState(init);
   const 유효성검사결과 = useRef({ 결과: false });
 
-  console.log("유효성검사결과", 유효성검사결과);
-
   const onchange = (event) => {
     setValue(event.target.value);
 

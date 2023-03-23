@@ -1,11 +1,11 @@
 import React from "react";
 
-export default function ListItem() {
+export default function ListItem({ todo, id }) {
   return (
-    <li>
+    <li id={id}>
       <label>
         <input type="checkbox" />
-        <span>TODO 1</span>
+        <span>{todo}</span>
       </label>
     </li>
   );

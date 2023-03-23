@@ -5,3 +5,9 @@ export const postTodoAxios = async (body) => {
 
   return res;
 };
+
+export const getTodoAxios = async () => {
+  const res = await axiosAuthApi.get("/todos");
+
+  return res;
+};
