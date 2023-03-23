@@ -4,22 +4,27 @@ import { updateTodoAxios } from "../api/todo";
 
 export default function ListItem({ todo, id, isCompleted, getTodo }) {
   const [editable, setEditable] = useState(false);
-  const handleEdit = () => {
-    setEditable(!editable);
-  };
+
   const [editedText] = useInput(todo);
   console.log(editedText);
   const [completion, setCompletion] = useState(isCompleted);
 
-  const updateTodo = async () => {
-    const res = await updateTodoAxios(id, {
-      todo: editedText.value,
-      isCompleted: completion,
-    });
+  const handleEdit = () => {
     setEditable(!editable);
-    console.log(res.data);
-    getTodo();
+
+    const updateTodo = async () => {
+      const res = await updateTodoAxios(id, {
+        todo: editedText.value,
+        isCompleted: completion,
+      });
+      console.log(res);
+      getTodo();
+    };
+    if (editable) {
+      updateTodo();
+    }
   };
+
   return (
     <>
       {editable ? (
@@ -31,9 +36,6 @@ export default function ListItem({ todo, id, isCompleted, getTodo }) {
           <button type="button" onClick={handleEdit}>
             수정
           </button>
-          <button type="button" onClick={updateTodo}>
-            수정완료
-          </button>
         </li>
       ) : (
         <li id={id}>
@@ -43,9 +45,6 @@ export default function ListItem({ todo, id, isCompleted, getTodo }) {
           </label>
           <button type="button" onClick={handleEdit}>
             수정
-          </button>
-          <button type="button" onClick={updateTodo}>
-            수정완료
           </button>
         </li>
       )}
