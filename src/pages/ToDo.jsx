@@ -17,7 +17,6 @@ export default function ToDo() {
     // 의존성 배열이 있는 경우, 의존성 배열값이 변경 될 때마다 콜백함수 실행.
 
     getTodo();
-    console.log("마지막실행");
   }, []);
 
   const 할일추가 = async () => {
@@ -26,7 +25,6 @@ export default function ToDo() {
     });
     getTodo();
   };
-  console.log("처음으로 실행");
   return (
     <div className="cont-list">
       <label htmlFor="inp-todo">새로운 할일</label>
