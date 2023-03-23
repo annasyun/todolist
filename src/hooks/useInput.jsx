@@ -14,5 +14,5 @@ export default function useInput(init, 유효성검사함수) {
     }
   };
 
-  return [{ value, onchange }, 유효성검사결과];
+  return [{ value, onchange, setValue }, 유효성검사결과];
 }

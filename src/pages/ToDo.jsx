@@ -24,6 +24,7 @@ export default function ToDo() {
       todo: todoValue.value,
     });
     getTodo();
+    todoValue.setValue("");
   };
   return (
     <div className="cont-list">
