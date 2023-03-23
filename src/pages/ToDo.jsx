@@ -37,7 +37,7 @@ export default function ToDo() {
       <button onClick={할일추가} data-testid="new-todo-add-button">
         추가
       </button>
-      <TodoList todoList={투두리스트} />
+      <TodoList getTodo={getTodo} todoList={투두리스트} />
     </div>
   );
 }

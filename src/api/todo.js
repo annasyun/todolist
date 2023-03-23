@@ -11,3 +11,9 @@ export const getTodoAxios = async () => {
 
   return res;
 };
+
+export const updateTodoAxios = async (id, body) => {
+  const res = await axiosAuthApi.put(`/todos/${id}`, body);
+
+  return res;
+};
