@@ -24,6 +24,7 @@ export default function ListItem({ todo, id, isCompleted, getTodo }) {
       updateTodo();
     }
   };
+  const handleDelete = () => {};
 
   return (
     <>
@@ -36,6 +37,9 @@ export default function ListItem({ todo, id, isCompleted, getTodo }) {
           <button type="button" onClick={handleEdit}>
             수정
           </button>
+          <button type="button" onClick={handleDelete}>
+            삭제
+          </button>
         </li>
       ) : (
         <li id={id}>
@@ -45,6 +49,9 @@ export default function ListItem({ todo, id, isCompleted, getTodo }) {
           </label>
           <button type="button" onClick={handleEdit}>
             수정
+          </button>
+          <button type="button" onClick={handleDelete}>
+            삭제
           </button>
         </li>
       )}
