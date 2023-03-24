@@ -14,12 +14,15 @@ function App() {
           <>
             <Route path="/signup" element={<Navigate to="/todo" />}></Route>
             <Route path="/signin" element={<Navigate to="/todo" />}></Route>
+            <Route path="/todo" element={<ToDo />}></Route>
           </>
         ) : (
-          <Route path="/signin" element={<SignIn />}></Route>
+          <>
+            <Route path="/signin" element={<SignIn />}></Route>
+            <Route path="/signup" element={<SignUp />}></Route>
+            <Route path="/todo" element={<Navigate to="/signin" />}></Route>
+          </>
         )}
-        <Route path="/signup" element={<SignUp />}></Route>
-        <Route path="/todo" element={<ToDo />}></Route>
       </Routes>
     </>
   );
