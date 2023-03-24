@@ -46,6 +46,7 @@ export default function SignIn() {
         value={로그인이메일객체.value}
         onChange={로그인이메일객체.onchange}
         type="text"
+        data-testid="email-input"
       />
 
       <label htmlFor="sign-in-pw">pw</label>
@@ -54,11 +55,18 @@ export default function SignIn() {
         value={로그인비밀번호객체.value}
         onChange={로그인비밀번호객체.onchange}
         type="text"
+        data-testid="password-input"
       />
-      <button onClick={로그인} disabled={!로그인버튼활성화}>
+      <button
+        onClick={로그인}
+        disabled={!로그인버튼활성화}
+        data-testid="signin-button"
+      >
         sign in
       </button>
-      <button onClick={navigateToSignUp}>sign up</button>
+      <button onClick={navigateToSignUp} data-testid="signup-button">
+        sign up
+      </button>
     </>
   );
 }
