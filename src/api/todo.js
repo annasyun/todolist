@@ -17,3 +17,9 @@ export const updateTodoAxios = async (id, body) => {
 
   return res;
 };
+
+export const deleteTodoAxios = async (id) => {
+  const res = await axiosAuthApi.delete(`/todos/${id}`);
+
+  return res;
+};

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import useInput from "../hooks/useInput";
-import { updateTodoAxios } from "../api/todo";
+import { deleteTodoAxios, updateTodoAxios } from "../api/todo";
 
 export default function ListItem({ todo, id, isCompleted, getTodo }) {
   const [editable, setEditable] = useState(false);
@@ -24,7 +24,12 @@ export default function ListItem({ todo, id, isCompleted, getTodo }) {
       updateTodo();
     }
   };
-  const handleDelete = () => {};
+  const handleDelete = async () => {
+    const res = await deleteTodoAxios(id);
+
+    console.log(res);
+    getTodo();
+  };
 
   return (
     <>
@@ -32,12 +37,24 @@ export default function ListItem({ todo, id, isCompleted, getTodo }) {
         <li id={id}>
           <label>
             <input type="checkbox" />
-            <input value={editedText.value} onChange={editedText.onchange} />
+            <input
+              value={editedText.value}
+              onChange={editedText.onchange}
+              data-testid="modify-input"
+            />
           </label>
-          <button type="button" onClick={handleEdit}>
+          <button
+            type="button"
+            onClick={handleEdit}
+            data-testid="modify-button"
+          >
             수정
           </button>
-          <button type="button" onClick={handleDelete}>
+          <button
+            type="button"
+            onClick={handleDelete}
+            data-testid="delete-button"
+          >
             삭제
           </button>
         </li>
@@ -47,10 +64,18 @@ export default function ListItem({ todo, id, isCompleted, getTodo }) {
             <input type="checkbox" />
             <span>{todo}</span>
           </label>
-          <button type="button" onClick={handleEdit}>
+          <button
+            type="button"
+            onClick={handleEdit}
+            data-testid="modify-button"
+          >
             수정
           </button>
-          <button type="button" onClick={handleDelete}>
+          <button
+            type="button"
+            onClick={handleDelete}
+            data-testid="delete-button"
+          >
             삭제
           </button>
         </li>
