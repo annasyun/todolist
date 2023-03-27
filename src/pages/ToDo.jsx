@@ -12,6 +12,7 @@ export default function ToDo() {
     const res = await getTodoAxios();
     set투두리스트(res.data);
   };
+
   useEffect(() => {
     // 렌더링 될 때 다른 코드들 실행 후 마지막에 실행되는 코드.
     // 의존성 배열이 있는 경우, 의존성 배열값이 변경 될 때마다 콜백함수 실행.
