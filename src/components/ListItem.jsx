@@ -6,28 +6,33 @@ export default function ListItem({ todo, id, isCompleted, getTodo }) {
   const [editable, setEditable] = useState(false);
 
   const [editedText] = useInput(todo);
-  console.log(editedText);
   const [completion, setCompletion] = useState(isCompleted);
+
+  console.log(editedText);
 
   const handleEdit = () => {
     setEditable(!editable);
+  };
 
-    const updateTodo = async () => {
+  const updateTodo = async () => {
+    if (editable) {
       const res = await updateTodoAxios(id, {
         todo: editedText.value,
         isCompleted: completion,
       });
-      console.log(res);
       getTodo();
-    };
-    if (editable) {
-      updateTodo();
+      setEditable(!editable);
     }
   };
+
+  const cancleModify = () => {
+    editedText.setValue(todo);
+    setEditable(!editable);
+  };
+
   const handleDelete = async () => {
     const res = await deleteTodoAxios(id);
 
-    console.log(res);
     getTodo();
   };
 
@@ -45,17 +50,17 @@ export default function ListItem({ todo, id, isCompleted, getTodo }) {
           </label>
           <button
             type="button"
-            onClick={handleEdit}
+            onClick={updateTodo}
             data-testid="modify-button"
           >
-            수정
+            제출
           </button>
           <button
             type="button"
-            onClick={handleDelete}
+            onClick={cancleModify}
             data-testid="delete-button"
           >
-            삭제
+            취소
           </button>
         </li>
       ) : (
