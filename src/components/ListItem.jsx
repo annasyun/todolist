@@ -8,8 +8,6 @@ export default function ListItem({ todo, id, isCompleted, getTodo }) {
   const [editedText] = useInput(todo);
   const [completion, setCompletion] = useState(isCompleted);
 
-  console.log(editedText);
-
   const handleEdit = () => {
     setEditable(!editable);
   };

@@ -14,9 +14,6 @@ export default function SignIn() {
     validator.email
   );
 
-  console.log(로그인이메일객체);
-  console.log(이메일유효성검사결과);
-
   const [로그인비밀번호객체, 비밀번호유효성검사결과] = useInput(
     "",
     validator.pw
@@ -30,7 +27,6 @@ export default function SignIn() {
       email: 로그인이메일객체.value,
       password: 로그인비밀번호객체.value,
     });
-    console.log("응답:", res);
 
     if (res.status == 200) {
       localStorage.setItem("signInToken", res.data.access_token);
